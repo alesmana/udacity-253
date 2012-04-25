@@ -237,15 +237,22 @@ class UserSignupHandler(webapp2.RequestHandler):
             error += 1
 
         if error == 0:
-            self.response.out.write(unit2_signup_success % {'username':username})
+            self.redirect("/unit2/welcome?username=%s" % username)
         else:
             # note that I omit password and verify_password field
             self.write_signup_form(username, '', '', email, 
                                     username_error, password_error, verify_password_error, email_error)
 
+class UserWelcomeHandler(webapp2.RequestHandler):
+    def get(self):
+        username=self.request.get('username')
+        self.response.out.write(unit2_signup_success % {'username':username})
+
+# App controller
 app = webapp2.WSGIApplication([ ('/', HelloUdacityHandler),
                                 ('/unit1/hello', HelloUdacityHandler),
                                 ('/unit2/signup', UserSignupHandler),
+                                ('/unit2/welcome', UserWelcomeHandler),
                                 ('/unit2/rot13', Rot13Handler)
                               ],
                               debug=True)
