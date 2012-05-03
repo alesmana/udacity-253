@@ -14,7 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#
 #-------------------------------------------------------------------------------
 # Name:        main.py
 # Purpose:     Homework 1 and Homework 2 of Udacity 253 Class April 2012
@@ -23,7 +22,7 @@
 #
 # Created:     26/04/2012
 # Copyright:   (c) Aditya Lesmana 2012
-# Licence:     <your licence>
+# Licence:     Apache License 2.0
 #-------------------------------------------------------------------------------
 
 import webapp2
