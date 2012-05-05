@@ -50,6 +50,7 @@
 import os
 import webapp2
 import jinja2
+import logging
 from google.appengine.ext import db
 
 
@@ -125,7 +126,7 @@ class BlogNewPostPage(Handler):
         if subject and content:
             p = Post(subject = subject, content = content)
             p.put() # save to datastore
-            self.redirect("/blog")
+            self.redirect("/blog/%s" % str(p.key().id()) )
         else: 
             error = "Need subject and content to be filled"
             # apparently both notation below are correct
