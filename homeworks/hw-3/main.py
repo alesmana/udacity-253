@@ -60,7 +60,6 @@ jinja_env = jinja2.Environment(loader = jinja2.FileSystemLoader(template_dir), a
 
 # TODO see http://jinja.pocoo.org/docs/api/#custom-filters for modifying data
 
-
 # Something to inherit webapp2.RequestHandler
 # Essentially wrap webapp2.RequestHandler and jinja2
 # TODO find out what are *a and **kw
@@ -82,6 +81,7 @@ class Post(db.Model):
     subject = db.StringProperty(required = True)
     content= db.TextProperty(required = True)
     created = db.DateTimeProperty(auto_now_add = True)
+    last_modified = db.DateTimeProperty(auto_now = True)
         
 # dealing with '/'
 # redirecting to /blog in case user forgot to type '/blog'
@@ -110,7 +110,6 @@ class BlogPostPage(Handler):
         
     def get(self, post_id):
         self.render_post(post_id)
-        
         
 class BlogNewPostPage(Handler):
     def render_new_post_form(self, subject="",content="", error=""):
